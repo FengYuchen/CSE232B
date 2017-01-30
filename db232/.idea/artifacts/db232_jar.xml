@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="db232:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/db232_jar</output-path>
+    <root id="archive" name="db232.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="db232" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/antlr-4.6-complete.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

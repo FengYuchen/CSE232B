@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_db232" default="compile.module.db232">
+  <dirname property="module.db232.basedir" file="${ant.file.module_db232}"/>
+  
+  <property name="module.jdk.home.db232" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.db232" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.db232" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.db232" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="db232.output.dir" value="${module.db232.basedir}/target/classes"/>
+  <property name="db232.testoutput.dir" value="${module.db232.basedir}/target/test-classes"/>
+  
+  <path id="db232.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="db232.module.production.classpath">
+    <path refid="${module.jdk.classpath.db232}"/>
+    <path refid="library.antlr-4.6-complete.classpath"/>
+  </path>
+  
+  <path id="db232.runtime.production.module.classpath">
+    <pathelement location="${db232.output.dir}"/>
+    <path refid="library.antlr-4.6-complete.classpath"/>
+  </path>
+  
+  <path id="db232.module.classpath">
+    <path refid="${module.jdk.classpath.db232}"/>
+    <pathelement location="${db232.output.dir}"/>
+    <path refid="library.antlr-4.6-complete.classpath"/>
+  </path>
+  
+  <path id="db232.runtime.module.classpath">
+    <pathelement location="${db232.testoutput.dir}"/>
+    <pathelement location="${db232.output.dir}"/>
+    <path refid="library.antlr-4.6-complete.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.db232">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.db232">
+    <patternset refid="excluded.from.module.db232"/>
+  </patternset>
+  
+  <path id="db232.module.sourcepath">
+    <dirset dir="${module.db232.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="db232.module.test.sourcepath">
+    <dirset dir="${module.db232.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.db232" depends="compile.module.db232.production,compile.module.db232.tests" description="Compile module db232"/>
+  
+  <target name="compile.module.db232.production" depends="register.custom.compilers" description="Compile module db232; production classes">
+    <mkdir dir="${db232.output.dir}"/>
+    <javac2 destdir="${db232.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.db232}/javac">
+      <compilerarg line="${compiler.args.db232}"/>
+      <bootclasspath refid="db232.module.bootclasspath"/>
+      <classpath refid="db232.module.production.classpath"/>
+      <src refid="db232.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.db232"/>
+    </javac2>
+    
+    <copy todir="${db232.output.dir}">
+      <fileset dir="${module.db232.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.db232.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.db232.tests" depends="register.custom.compilers,compile.module.db232.production" description="compile module db232; test classes" unless="skip.tests">
+    <mkdir dir="${db232.testoutput.dir}"/>
+    <javac2 destdir="${db232.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.db232}/javac">
+      <compilerarg line="${compiler.args.db232}"/>
+      <bootclasspath refid="db232.module.bootclasspath"/>
+      <classpath refid="db232.module.classpath"/>
+      <src refid="db232.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.db232"/>
+    </javac2>
+    
+    <copy todir="${db232.testoutput.dir}">
+      <fileset dir="${module.db232.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.db232" description="cleanup module">
+    <delete dir="${db232.output.dir}"/>
+    <delete dir="${db232.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,16 @@
+<result>
+{
+for	$a	in	document("j_caesar.xml")//ACT
+let	$sc:=	$a/SCENE,	$sp:=$sc/SPEECH
+where	$sp/LINE/text() ="No worthier than the dust!"
+return	<speaks>{
+<who>{$sp/SPEAKER/text()}</who>,
+<when>
+{<act>{$a/TITLE/text()}</act>,
+        <scene>{$sc/TITLE/text()}</scene>
+}
+</when>
+}
+</speaks>
+}
+</result>

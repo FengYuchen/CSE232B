@@ -1,0 +1,5 @@
+<SCENES> {
+
+document("j_caesar.xml")//ACT[./TITLE]/*/SPEECH/../TITLE
+
+}</SCENES>

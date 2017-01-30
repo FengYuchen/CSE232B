@@ -1,0 +1,6 @@
+<result>{
+for $a	in document("j_caesar.xml")//PERSONAE, $b in $a/PGROUP/PERSONA
+where	($b/text() = $a/../ACT/SCENE/SPEECH/SPEAKER/text())
+return	<PERSONA>{$b/text()}</PERSONA>
+}
+</result>
