@@ -1,4 +1,4 @@
-// Generated from C:/Users/tom/IdeaProjects/db232/src/main/resources\Xquery.g4 by ANTLR 4.6
+// Generated from C:/Users/tom/Desktop/New folder/CSE232B/db232/src/main/resources\Xquery.g4 by ANTLR 4.6
 package anltr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -19,21 +19,23 @@ public class XqueryParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, TXT=21, NAME=22, WS=23;
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
+		TXT=25, NAME=26, WS=27;
 	public static final int
-		RULE_ap = 0, RULE_fname = 1, RULE_rp = 2, RULE_fltr = 3;
+		RULE_ap = 0, RULE_fname = 1, RULE_rp = 2, RULE_func = 3;
 	public static final String[] ruleNames = {
-		"ap", "fname", "rp", "fltr"
+		"ap", "fname", "rp", "func"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'document(\"'", "'\"'", "')'", "'/'", "'//'", "'.'", "'@'", "'*'", 
-		"'..'", "'('", "'['", "']'", "','", "'='", "'eq'", "'=='", "'is'", "'and'", 
-		"'or'", "'not'", "'text()'"
+		null, "'<'", "'>'", "'{'", "'}'", "'/'", "'document(\"'", "'\"'", "')'", 
+		"'//'", "'.'", "'@'", "'*'", "'..'", "'('", "'['", "']'", "','", "'='", 
+		"'eq'", "'=='", "'is'", "'and'", "'or'", "'not'", "'text()'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, "TXT", "NAME", "WS"
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, "TXT", "NAME", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -95,6 +97,29 @@ public class XqueryParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
+	public static class APTagContext extends ApContext {
+		public List<TerminalNode> NAME() { return getTokens(XqueryParser.NAME); }
+		public TerminalNode NAME(int i) {
+			return getToken(XqueryParser.NAME, i);
+		}
+		public ApContext ap() {
+			return getRuleContext(ApContext.class,0);
+		}
+		public APTagContext(ApContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterAPTag(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitAPTag(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitAPTag(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 	public static class APChildrenContext extends ApContext {
 		public FnameContext fname() {
 			return getRuleContext(FnameContext.class,0);
@@ -144,42 +169,68 @@ public class XqueryParser extends Parser {
 		ApContext _localctx = new ApContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_ap);
 		try {
-			setState(22);
+			setState(33);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
-				_localctx = new APChildrenContext(_localctx);
+				_localctx = new APTagContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(8);
 				match(T__0);
 				setState(9);
-				fname();
+				match(NAME);
 				setState(10);
 				match(T__1);
 				setState(11);
 				match(T__2);
 				setState(12);
-				match(T__3);
+				ap();
 				setState(13);
-				rp(0);
+				match(T__3);
+				setState(14);
+				match(T__0);
+				setState(15);
+				match(T__4);
+				setState(16);
+				match(NAME);
+				setState(17);
+				match(T__1);
 				}
 				break;
 			case 2:
-				_localctx = new APAllContext(_localctx);
+				_localctx = new APChildrenContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(15);
-				match(T__0);
-				setState(16);
-				fname();
-				setState(17);
-				match(T__1);
-				setState(18);
-				match(T__2);
 				setState(19);
-				match(T__4);
+				match(T__5);
 				setState(20);
+				fname();
+				setState(21);
+				match(T__6);
+				setState(22);
+				match(T__7);
+				setState(23);
+				match(T__4);
+				setState(24);
+				rp(0);
+				}
+				break;
+			case 3:
+				_localctx = new APAllContext(_localctx);
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(26);
+				match(T__5);
+				setState(27);
+				fname();
+				setState(28);
+				match(T__6);
+				setState(29);
+				match(T__7);
+				setState(30);
+				match(T__8);
+				setState(31);
 				rp(0);
 				}
 				break;
@@ -227,16 +278,16 @@ public class XqueryParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24);
+			setState(35);
 			match(NAME);
-			setState(27);
+			setState(38);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==T__5) {
+			if (_la==T__9) {
 				{
-				setState(25);
-				match(T__5);
-				setState(26);
+				setState(36);
+				match(T__9);
+				setState(37);
 				match(NAME);
 				}
 			}
@@ -265,110 +316,96 @@ public class XqueryParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class AllChildrenContext extends RpContext {
-		public AllChildrenContext(RpContext ctx) { copyFrom(ctx); }
+	public static class RPAttributeContext extends RpContext {
+		public TerminalNode NAME() { return getToken(XqueryParser.NAME, 0); }
+		public RPAttributeContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterAllChildren(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPAttribute(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitAllChildren(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPAttribute(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitAllChildren(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPAttribute(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class RPChildrenContext extends RpContext {
+	public static class RPDotContext extends RpContext {
 		public List<RpContext> rp() {
 			return getRuleContexts(RpContext.class);
 		}
 		public RpContext rp(int i) {
 			return getRuleContext(RpContext.class,i);
 		}
-		public RPChildrenContext(RpContext ctx) { copyFrom(ctx); }
+		public RPDotContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPChildren(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPDot(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPChildren(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPDot(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPChildren(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPDot(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class RPwithParContext extends RpContext {
+	public static class RPCondContext extends RpContext {
 		public RpContext rp() {
 			return getRuleContext(RpContext.class,0);
 		}
-		public RPwithParContext(RpContext ctx) { copyFrom(ctx); }
+		public FuncContext func() {
+			return getRuleContext(FuncContext.class,0);
+		}
+		public RPCondContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPwithPar(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPCond(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPwithPar(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPCond(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPwithPar(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPCond(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class TagNameContext extends RpContext {
-		public TerminalNode NAME() { return getToken(XqueryParser.NAME, 0); }
-		public TagNameContext(RpContext ctx) { copyFrom(ctx); }
+	public static class RPCurrentContext extends RpContext {
+		public RPCurrentContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterTagName(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPCurrent(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitTagName(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPCurrent(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitTagName(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPCurrent(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class AttributeContext extends RpContext {
-		public TerminalNode NAME() { return getToken(XqueryParser.NAME, 0); }
-		public AttributeContext(RpContext ctx) { copyFrom(ctx); }
+	public static class RPParentContext extends RpContext {
+		public RPParentContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterAttribute(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPParent(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitAttribute(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPParent(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitAttribute(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class ParentContext extends RpContext {
-		public ParentContext(RpContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterParent(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitParent(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitParent(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPParent(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -386,6 +423,25 @@ public class XqueryParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitText(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class RPParContext extends RpContext {
+		public RpContext rp() {
+			return getRuleContext(RpContext.class,0);
+		}
+		public RPParContext(RpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPPar(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPPar(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPPar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -411,63 +467,58 @@ public class XqueryParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class CurrentContext extends RpContext {
-		public CurrentContext(RpContext ctx) { copyFrom(ctx); }
+	public static class RPTagNameContext extends RpContext {
+		public TerminalNode NAME() { return getToken(XqueryParser.NAME, 0); }
+		public RPTagNameContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterCurrent(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPTagName(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitCurrent(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPTagName(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitCurrent(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPTagName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class TwoRPContext extends RpContext {
+	public static class RPChildContext extends RpContext {
 		public List<RpContext> rp() {
 			return getRuleContexts(RpContext.class);
 		}
 		public RpContext rp(int i) {
 			return getRuleContext(RpContext.class,i);
 		}
-		public TwoRPContext(RpContext ctx) { copyFrom(ctx); }
+		public RPChildContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterTwoRP(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPChild(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitTwoRP(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPChild(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitTwoRP(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPChild(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class RPConditionContext extends RpContext {
-		public RpContext rp() {
-			return getRuleContext(RpContext.class,0);
-		}
-		public FltrContext fltr() {
-			return getRuleContext(FltrContext.class,0);
-		}
-		public RPConditionContext(RpContext ctx) { copyFrom(ctx); }
+	public static class RPAllChildrenContext extends RpContext {
+		public RPAllChildrenContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPCondition(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterRPAllChildren(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPCondition(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitRPAllChildren(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPCondition(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitRPAllChildren(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -487,55 +538,55 @@ public class XqueryParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(41);
+			setState(52);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NAME:
 				{
-				_localctx = new TagNameContext(_localctx);
+				_localctx = new RPTagNameContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(30);
+				setState(41);
 				match(NAME);
 				}
 				break;
-			case T__6:
+			case T__10:
 				{
-				_localctx = new AttributeContext(_localctx);
+				_localctx = new RPAttributeContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(31);
-				match(T__6);
-				setState(32);
+				setState(42);
+				match(T__10);
+				setState(43);
 				match(NAME);
 				}
 				break;
-			case T__7:
+			case T__11:
 				{
-				_localctx = new AllChildrenContext(_localctx);
+				_localctx = new RPAllChildrenContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(33);
-				match(T__7);
+				setState(44);
+				match(T__11);
 				}
 				break;
-			case T__5:
+			case T__9:
 				{
-				_localctx = new CurrentContext(_localctx);
+				_localctx = new RPCurrentContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(34);
-				match(T__5);
+				setState(45);
+				match(T__9);
 				}
 				break;
-			case T__8:
+			case T__12:
 				{
-				_localctx = new ParentContext(_localctx);
+				_localctx = new RPParentContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(35);
-				match(T__8);
+				setState(46);
+				match(T__12);
 				}
 				break;
 			case TXT:
@@ -543,28 +594,28 @@ public class XqueryParser extends Parser {
 				_localctx = new TextContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(36);
+				setState(47);
 				match(TXT);
 				}
 				break;
-			case T__9:
+			case T__13:
 				{
-				_localctx = new RPwithParContext(_localctx);
+				_localctx = new RPParContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(37);
-				match(T__9);
-				setState(38);
+				setState(48);
+				match(T__13);
+				setState(49);
 				rp(0);
-				setState(39);
-				match(T__2);
+				setState(50);
+				match(T__7);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(59);
+			setState(70);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -572,18 +623,18 @@ public class XqueryParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(57);
+					setState(68);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 					case 1:
 						{
-						_localctx = new RPChildrenContext(new RpContext(_parentctx, _parentState));
+						_localctx = new RPChildContext(new RpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_rp);
-						setState(43);
+						setState(54);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(44);
-						match(T__3);
-						setState(45);
+						setState(55);
+						match(T__4);
+						setState(56);
 						rp(5);
 						}
 						break;
@@ -591,44 +642,44 @@ public class XqueryParser extends Parser {
 						{
 						_localctx = new RPAllContext(new RpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_rp);
-						setState(46);
+						setState(57);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(47);
-						match(T__4);
-						setState(48);
+						setState(58);
+						match(T__8);
+						setState(59);
 						rp(4);
 						}
 						break;
 					case 3:
 						{
-						_localctx = new TwoRPContext(new RpContext(_parentctx, _parentState));
+						_localctx = new RPDotContext(new RpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_rp);
-						setState(49);
+						setState(60);
 						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-						setState(50);
-						match(T__12);
-						setState(51);
+						setState(61);
+						match(T__16);
+						setState(62);
 						rp(2);
 						}
 						break;
 					case 4:
 						{
-						_localctx = new RPConditionContext(new RpContext(_parentctx, _parentState));
+						_localctx = new RPCondContext(new RpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_rp);
-						setState(52);
+						setState(63);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(53);
-						match(T__10);
-						setState(54);
-						fltr(0);
-						setState(55);
-						match(T__11);
+						setState(64);
+						match(T__14);
+						setState(65);
+						func(0);
+						setState(66);
+						match(T__15);
 						}
 						break;
 					}
 					} 
 				}
-				setState(61);
+				setState(72);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
@@ -645,270 +696,270 @@ public class XqueryParser extends Parser {
 		return _localctx;
 	}
 
-	public static class FltrContext extends ParserRuleContext {
-		public FltrContext(ParserRuleContext parent, int invokingState) {
+	public static class FuncContext extends ParserRuleContext {
+		public FuncContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_fltr; }
+		@Override public int getRuleIndex() { return RULE_func; }
 	 
-		public FltrContext() { }
-		public void copyFrom(FltrContext ctx) {
+		public FuncContext() { }
+		public void copyFrom(FuncContext ctx) {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class FRPwithParContext extends FltrContext {
-		public FltrContext fltr() {
-			return getRuleContext(FltrContext.class,0);
+	public static class FandContext extends FuncContext {
+		public List<FuncContext> func() {
+			return getRuleContexts(FuncContext.class);
 		}
-		public FRPwithParContext(FltrContext ctx) { copyFrom(ctx); }
+		public FuncContext func(int i) {
+			return getRuleContext(FuncContext.class,i);
+		}
+		public FandContext(FuncContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFRPwithPar(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFand(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFRPwithPar(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFand(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFRPwithPar(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFand(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class FRPnotContext extends FltrContext {
-		public FltrContext fltr() {
-			return getRuleContext(FltrContext.class,0);
+	public static class FisContext extends FuncContext {
+		public List<RpContext> rp() {
+			return getRuleContexts(RpContext.class);
 		}
-		public FRPnotContext(FltrContext ctx) { copyFrom(ctx); }
+		public RpContext rp(int i) {
+			return getRuleContext(RpContext.class,i);
+		}
+		public FisContext(FuncContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFRPnot(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFis(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFRPnot(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFis(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFRPnot(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFis(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class FRPContext extends FltrContext {
+	public static class FContext extends FuncContext {
 		public RpContext rp() {
 			return getRuleContext(RpContext.class,0);
 		}
-		public FRPContext(FltrContext ctx) { copyFrom(ctx); }
+		public FContext(FuncContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFRP(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterF(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFRP(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitF(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFRP(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitF(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class FRPorContext extends FltrContext {
-		public List<FltrContext> fltr() {
-			return getRuleContexts(FltrContext.class);
+	public static class ForContext extends FuncContext {
+		public List<FuncContext> func() {
+			return getRuleContexts(FuncContext.class);
 		}
-		public FltrContext fltr(int i) {
-			return getRuleContext(FltrContext.class,i);
+		public FuncContext func(int i) {
+			return getRuleContext(FuncContext.class,i);
 		}
-		public FRPorContext(FltrContext ctx) { copyFrom(ctx); }
+		public ForContext(FuncContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFRPor(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFor(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFRPor(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFor(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFRPor(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFor(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class FRPequalContext extends FltrContext {
+	public static class FequalContext extends FuncContext {
 		public List<RpContext> rp() {
 			return getRuleContexts(RpContext.class);
 		}
 		public RpContext rp(int i) {
 			return getRuleContext(RpContext.class,i);
 		}
-		public FRPequalContext(FltrContext ctx) { copyFrom(ctx); }
+		public FequalContext(FuncContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFRPequal(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFequal(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFRPequal(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFequal(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFRPequal(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFequal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class FRPisContext extends FltrContext {
-		public List<RpContext> rp() {
-			return getRuleContexts(RpContext.class);
+	public static class FParContext extends FuncContext {
+		public FuncContext func() {
+			return getRuleContext(FuncContext.class,0);
 		}
-		public RpContext rp(int i) {
-			return getRuleContext(RpContext.class,i);
-		}
-		public FRPisContext(FltrContext ctx) { copyFrom(ctx); }
+		public FParContext(FuncContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFRPis(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFPar(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFRPis(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFPar(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFRPis(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFPar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class FRPandContext extends FltrContext {
-		public List<FltrContext> fltr() {
-			return getRuleContexts(FltrContext.class);
+	public static class FnotContext extends FuncContext {
+		public FuncContext func() {
+			return getRuleContext(FuncContext.class,0);
 		}
-		public FltrContext fltr(int i) {
-			return getRuleContext(FltrContext.class,i);
-		}
-		public FRPandContext(FltrContext ctx) { copyFrom(ctx); }
+		public FnotContext(FuncContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFRPand(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).enterFnot(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFRPand(this);
+			if ( listener instanceof XqueryListener ) ((XqueryListener)listener).exitFnot(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFRPand(this);
+			if ( visitor instanceof XqueryVisitor ) return ((XqueryVisitor<? extends T>)visitor).visitFnot(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final FltrContext fltr() throws RecognitionException {
-		return fltr(0);
+	public final FuncContext func() throws RecognitionException {
+		return func(0);
 	}
 
-	private FltrContext fltr(int _p) throws RecognitionException {
+	private FuncContext func(int _p) throws RecognitionException {
 		ParserRuleContext _parentctx = _ctx;
 		int _parentState = getState();
-		FltrContext _localctx = new FltrContext(_ctx, _parentState);
-		FltrContext _prevctx = _localctx;
+		FuncContext _localctx = new FuncContext(_ctx, _parentState);
+		FuncContext _prevctx = _localctx;
 		int _startState = 6;
-		enterRecursionRule(_localctx, 6, RULE_fltr, _p);
+		enterRecursionRule(_localctx, 6, RULE_func, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(86);
+			setState(97);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				{
-				_localctx = new FRPContext(_localctx);
+				_localctx = new FContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(63);
+				setState(74);
 				rp(0);
 				}
 				break;
 			case 2:
 				{
-				_localctx = new FRPequalContext(_localctx);
+				_localctx = new FequalContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(64);
+				setState(75);
 				rp(0);
-				setState(65);
-				match(T__13);
-				setState(66);
+				setState(76);
+				match(T__17);
+				setState(77);
 				rp(0);
 				}
 				break;
 			case 3:
 				{
-				_localctx = new FRPequalContext(_localctx);
+				_localctx = new FequalContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(68);
+				setState(79);
 				rp(0);
-				setState(69);
-				match(T__14);
-				setState(70);
+				setState(80);
+				match(T__18);
+				setState(81);
 				rp(0);
 				}
 				break;
 			case 4:
 				{
-				_localctx = new FRPisContext(_localctx);
+				_localctx = new FisContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(72);
+				setState(83);
 				rp(0);
-				setState(73);
-				match(T__15);
-				setState(74);
+				setState(84);
+				match(T__19);
+				setState(85);
 				rp(0);
 				}
 				break;
 			case 5:
 				{
-				_localctx = new FRPisContext(_localctx);
+				_localctx = new FisContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(76);
+				setState(87);
 				rp(0);
-				setState(77);
-				match(T__16);
-				setState(78);
+				setState(88);
+				match(T__20);
+				setState(89);
 				rp(0);
 				}
 				break;
 			case 6:
 				{
-				_localctx = new FRPwithParContext(_localctx);
+				_localctx = new FParContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(80);
-				match(T__9);
-				setState(81);
-				fltr(0);
-				setState(82);
-				match(T__2);
+				setState(91);
+				match(T__13);
+				setState(92);
+				func(0);
+				setState(93);
+				match(T__7);
 				}
 				break;
 			case 7:
 				{
-				_localctx = new FRPnotContext(_localctx);
+				_localctx = new FnotContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(84);
-				match(T__19);
-				setState(85);
-				fltr(1);
+				setState(95);
+				match(T__23);
+				setState(96);
+				func(1);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(96);
+			setState(107);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -916,37 +967,37 @@ public class XqueryParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(94);
+					setState(105);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 					case 1:
 						{
-						_localctx = new FRPandContext(new FltrContext(_parentctx, _parentState));
-						pushNewRecursionContext(_localctx, _startState, RULE_fltr);
-						setState(88);
+						_localctx = new FandContext(new FuncContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_func);
+						setState(99);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(89);
-						match(T__17);
-						setState(90);
-						fltr(4);
+						setState(100);
+						match(T__21);
+						setState(101);
+						func(4);
 						}
 						break;
 					case 2:
 						{
-						_localctx = new FRPorContext(new FltrContext(_parentctx, _parentState));
-						pushNewRecursionContext(_localctx, _startState, RULE_fltr);
-						setState(91);
+						_localctx = new ForContext(new FuncContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_func);
+						setState(102);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(92);
-						match(T__18);
-						setState(93);
-						fltr(3);
+						setState(103);
+						match(T__22);
+						setState(104);
+						func(3);
 						}
 						break;
 					}
 					} 
 				}
-				setState(98);
+				setState(109);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			}
@@ -968,7 +1019,7 @@ public class XqueryParser extends Parser {
 		case 2:
 			return rp_sempred((RpContext)_localctx, predIndex);
 		case 3:
-			return fltr_sempred((FltrContext)_localctx, predIndex);
+			return func_sempred((FuncContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -985,7 +1036,7 @@ public class XqueryParser extends Parser {
 		}
 		return true;
 	}
-	private boolean fltr_sempred(FltrContext _localctx, int predIndex) {
+	private boolean func_sempred(FuncContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 4:
 			return precpred(_ctx, 3);
@@ -996,32 +1047,35 @@ public class XqueryParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31f\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\35q\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2"+
-		"\3\2\5\2\31\n\2\3\3\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\3\4\5\4,\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\7\4<\n\4\f\4\16\4?\13\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5Y\n"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5a\n\5\f\5\16\5d\13\5\3\5\2\4\6\b\6\2\4\6"+
-		"\b\2\2u\2\30\3\2\2\2\4\32\3\2\2\2\6+\3\2\2\2\bX\3\2\2\2\n\13\7\3\2\2\13"+
-		"\f\5\4\3\2\f\r\7\4\2\2\r\16\7\5\2\2\16\17\7\6\2\2\17\20\5\6\4\2\20\31"+
-		"\3\2\2\2\21\22\7\3\2\2\22\23\5\4\3\2\23\24\7\4\2\2\24\25\7\5\2\2\25\26"+
-		"\7\7\2\2\26\27\5\6\4\2\27\31\3\2\2\2\30\n\3\2\2\2\30\21\3\2\2\2\31\3\3"+
-		"\2\2\2\32\35\7\30\2\2\33\34\7\b\2\2\34\36\7\30\2\2\35\33\3\2\2\2\35\36"+
-		"\3\2\2\2\36\5\3\2\2\2\37 \b\4\1\2 ,\7\30\2\2!\"\7\t\2\2\",\7\30\2\2#,"+
-		"\7\n\2\2$,\7\b\2\2%,\7\13\2\2&,\7\27\2\2\'(\7\f\2\2()\5\6\4\2)*\7\5\2"+
-		"\2*,\3\2\2\2+\37\3\2\2\2+!\3\2\2\2+#\3\2\2\2+$\3\2\2\2+%\3\2\2\2+&\3\2"+
-		"\2\2+\'\3\2\2\2,=\3\2\2\2-.\f\6\2\2./\7\6\2\2/<\5\6\4\7\60\61\f\5\2\2"+
-		"\61\62\7\7\2\2\62<\5\6\4\6\63\64\f\3\2\2\64\65\7\17\2\2\65<\5\6\4\4\66"+
-		"\67\f\4\2\2\678\7\r\2\289\5\b\5\29:\7\16\2\2:<\3\2\2\2;-\3\2\2\2;\60\3"+
-		"\2\2\2;\63\3\2\2\2;\66\3\2\2\2<?\3\2\2\2=;\3\2\2\2=>\3\2\2\2>\7\3\2\2"+
-		"\2?=\3\2\2\2@A\b\5\1\2AY\5\6\4\2BC\5\6\4\2CD\7\20\2\2DE\5\6\4\2EY\3\2"+
-		"\2\2FG\5\6\4\2GH\7\21\2\2HI\5\6\4\2IY\3\2\2\2JK\5\6\4\2KL\7\22\2\2LM\5"+
-		"\6\4\2MY\3\2\2\2NO\5\6\4\2OP\7\23\2\2PQ\5\6\4\2QY\3\2\2\2RS\7\f\2\2ST"+
-		"\5\b\5\2TU\7\5\2\2UY\3\2\2\2VW\7\26\2\2WY\5\b\5\3X@\3\2\2\2XB\3\2\2\2"+
-		"XF\3\2\2\2XJ\3\2\2\2XN\3\2\2\2XR\3\2\2\2XV\3\2\2\2Yb\3\2\2\2Z[\f\5\2\2"+
-		"[\\\7\24\2\2\\a\5\b\5\6]^\f\4\2\2^_\7\25\2\2_a\5\b\5\5`Z\3\2\2\2`]\3\2"+
-		"\2\2ad\3\2\2\2b`\3\2\2\2bc\3\2\2\2c\t\3\2\2\2db\3\2\2\2\n\30\35+;=X`b";
+		"\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\5\2$\n\2\3\3\3\3\3\3"+
+		"\5\3)\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\67\n\4\3"+
+		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4G\n\4\f\4\16"+
+		"\4J\13\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
+		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5d\n\5\3\5\3\5\3\5\3\5\3\5\3\5\7"+
+		"\5l\n\5\f\5\16\5o\13\5\3\5\2\4\6\b\6\2\4\6\b\2\2\u0081\2#\3\2\2\2\4%\3"+
+		"\2\2\2\6\66\3\2\2\2\bc\3\2\2\2\n\13\7\3\2\2\13\f\7\34\2\2\f\r\7\4\2\2"+
+		"\r\16\7\5\2\2\16\17\5\2\2\2\17\20\7\6\2\2\20\21\7\3\2\2\21\22\7\7\2\2"+
+		"\22\23\7\34\2\2\23\24\7\4\2\2\24$\3\2\2\2\25\26\7\b\2\2\26\27\5\4\3\2"+
+		"\27\30\7\t\2\2\30\31\7\n\2\2\31\32\7\7\2\2\32\33\5\6\4\2\33$\3\2\2\2\34"+
+		"\35\7\b\2\2\35\36\5\4\3\2\36\37\7\t\2\2\37 \7\n\2\2 !\7\13\2\2!\"\5\6"+
+		"\4\2\"$\3\2\2\2#\n\3\2\2\2#\25\3\2\2\2#\34\3\2\2\2$\3\3\2\2\2%(\7\34\2"+
+		"\2&\'\7\f\2\2\')\7\34\2\2(&\3\2\2\2()\3\2\2\2)\5\3\2\2\2*+\b\4\1\2+\67"+
+		"\7\34\2\2,-\7\r\2\2-\67\7\34\2\2.\67\7\16\2\2/\67\7\f\2\2\60\67\7\17\2"+
+		"\2\61\67\7\33\2\2\62\63\7\20\2\2\63\64\5\6\4\2\64\65\7\n\2\2\65\67\3\2"+
+		"\2\2\66*\3\2\2\2\66,\3\2\2\2\66.\3\2\2\2\66/\3\2\2\2\66\60\3\2\2\2\66"+
+		"\61\3\2\2\2\66\62\3\2\2\2\67H\3\2\2\289\f\6\2\29:\7\7\2\2:G\5\6\4\7;<"+
+		"\f\5\2\2<=\7\13\2\2=G\5\6\4\6>?\f\3\2\2?@\7\23\2\2@G\5\6\4\4AB\f\4\2\2"+
+		"BC\7\21\2\2CD\5\b\5\2DE\7\22\2\2EG\3\2\2\2F8\3\2\2\2F;\3\2\2\2F>\3\2\2"+
+		"\2FA\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2I\7\3\2\2\2JH\3\2\2\2KL\b\5"+
+		"\1\2Ld\5\6\4\2MN\5\6\4\2NO\7\24\2\2OP\5\6\4\2Pd\3\2\2\2QR\5\6\4\2RS\7"+
+		"\25\2\2ST\5\6\4\2Td\3\2\2\2UV\5\6\4\2VW\7\26\2\2WX\5\6\4\2Xd\3\2\2\2Y"+
+		"Z\5\6\4\2Z[\7\27\2\2[\\\5\6\4\2\\d\3\2\2\2]^\7\20\2\2^_\5\b\5\2_`\7\n"+
+		"\2\2`d\3\2\2\2ab\7\32\2\2bd\5\b\5\3cK\3\2\2\2cM\3\2\2\2cQ\3\2\2\2cU\3"+
+		"\2\2\2cY\3\2\2\2c]\3\2\2\2ca\3\2\2\2dm\3\2\2\2ef\f\5\2\2fg\7\30\2\2gl"+
+		"\5\b\5\6hi\f\4\2\2ij\7\31\2\2jl\5\b\5\5ke\3\2\2\2kh\3\2\2\2lo\3\2\2\2"+
+		"mk\3\2\2\2mn\3\2\2\2n\t\3\2\2\2om\3\2\2\2\n#(\66FHckm";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -6,7 +6,8 @@
 grammar Xquery;
 
 ap
-	: 'document("' fname '"' ')' '/' rp 		# APChildren
+	: '<' NAME '>' '{' ap '}' '<' '/' NAME '>'  # APTag
+	| 'document("' fname '"' ')' '/' rp 		# APChildren
 	| 'document("' fname '"' ')' '//' rp		# APAll
 	;
 
@@ -15,29 +16,29 @@ fname
 	;
 
 rp
-	: NAME 				# TagName
-	| '@' NAME 			# Attribute
-	| '*' 				# AllChildren
-	| '.' 				# Current
-	| '..' 				# Parent
+	: NAME 				# RPTagName
+	| '@' NAME 			# RPAttribute
+	| '*' 				# RPAllChildren
+	| '.' 				# RPCurrent
+	| '..' 				# RPParent
 	| TXT 				# Text
-	| '(' rp ')' 		# RPwithPar
-	| rp '/' rp 		# RPChildren
+	| '(' rp ')' 		# RPPar
+	| rp '/' rp 		# RPChild
 	| rp '//' rp 		# RPAll
-	| rp '[' fltr ']' 	# RPCondition
-	| rp ',' rp 		# TwoRP
+	| rp '[' func ']' 	# RPCond
+	| rp ',' rp 		# RPDot
 	;
 
-fltr
-	: rp 				# FRP
-	| rp '=' rp 		# FRPequal
-	| rp 'eq' rp 		# FRPequal
-	| rp '==' rp 		# FRPis
-	| rp 'is' rp 		# FRPis
-	| '(' fltr ')' 		# FRPwithPar
-	| fltr 'and' fltr 	# FRPand
-	| fltr 'or' fltr 	# FRPor
-	| 'not' fltr 		# FRPnot
+func
+	: rp 				# F
+	| rp '=' rp 		# Fequal
+	| rp 'eq' rp 		# Fequal
+	| rp '==' rp 		# Fis
+	| rp 'is' rp 		# Fis
+	| '(' func ')' 		# FPar
+	| func 'and' func 	# Fand
+	| func 'or' func 	# For
+	| 'not' func 		# Fnot
 	;
 
 TXT:	'text()';

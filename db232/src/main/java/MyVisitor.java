@@ -18,16 +18,37 @@ import java.util.StringTokenizer;
  */
 public class MyVisitor extends XqueryBaseVisitor<Object>{
     private LinkedList<Curstate> Stack = new LinkedList<Curstate>();
-    private static LinkedList<Node> unique(LinkedList<Node> node_list){
+    private static LinkedList<Node> unique(LinkedList<Node> node_list) {
         LinkedList<Node> res = new LinkedList<Node>();
         HashMap<Node, Boolean> hashMap = new HashMap<Node, Boolean>();
-        for (int i = 0; i < node_list.size(); i++){
-            if (!hashMap.containsKey(node_list.get(i))){
-                hashMap.put(node_list.get(i),true);
+        for (int i = 0; i < node_list.size(); i++) {
+            if (!hashMap.containsKey(node_list.get(i))) {
+                hashMap.put(node_list.get(i), true);
                 res.add(node_list.get(i));
             }
         }
         return res;
+    }
+    @Override
+    public Object visitAPTag(XqueryParser.APTagContext ctx){
+        System.out.println("<tag>AP</tag>");
+        String tmp = ctx.NAME(0).getText();
+        LinkedList<Node> result = (LinkedList<Node>) visit(ctx.ap());
+        LinkedList<Node> ans = new LinkedList<>();
+        try{
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.newDocument();
+            Node outnode = doc.createElement(tmp);
+            for (Node node : result) {
+                Node apnode = doc.importNode(node, true);
+                outnode.appendChild(apnode);
+            }
+            ans.add(outnode);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return ans;
     }
     @Override
     public Object visitAPChildren(XqueryParser.APChildrenContext ctx){
@@ -86,7 +107,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitAllChildren(XqueryParser.AllChildrenContext ctx){
+    public Object visitRPAllChildren(XqueryParser.RPAllChildrenContext ctx){
         System.out.println("*");
         Curstate cs = Stack.peek();
         LinkedList<Node> result = new LinkedList<>();
@@ -99,7 +120,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
         return  result;
     }
     @Override
-    public Object visitRPChildren(XqueryParser.RPChildrenContext ctx){
+    public Object visitRPChild(XqueryParser.RPChildContext ctx){
         System.out.println("rp/rp");
         LinkedList<Node> first = (LinkedList<Node>) visit(ctx.rp(0));
         Curstate tmp = new Curstate();
@@ -113,13 +134,13 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
         return result;
     }
     @Override
-    public Object visitRPwithPar(XqueryParser.RPwithParContext ctx){
+    public Object visitRPPar(XqueryParser.RPParContext ctx){
         System.out.println("(rp)");
         return visit(ctx.rp());
     }
 
     @Override
-    public Object visitTagName(XqueryParser.TagNameContext ctx){
+    public Object visitRPTagName(XqueryParser.RPTagNameContext ctx){
         System.out.println("TagName");
         LinkedList<Node> result = new LinkedList<>();
         String Tag = (String) ctx.getText();
@@ -131,7 +152,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitAttribute(XqueryParser.AttributeContext ctx){
+    public Object visitRPAttribute(XqueryParser.RPAttributeContext ctx){
         System.out.println("@attr");
         String attr = ctx.NAME().getText();
         Curstate cs = Stack.peek();
@@ -143,7 +164,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitParent(XqueryParser.ParentContext ctx){
+    public Object visitRPParent(XqueryParser.RPParentContext ctx){
         System.out.println("..");
         Curstate cs = Stack.peek();
         return unique(cs.getParent());
@@ -181,14 +202,14 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitCurrent(XqueryParser.CurrentContext ctx){
+    public Object visitRPCurrent(XqueryParser.RPCurrentContext ctx){
         System.out.println(".");
         Curstate cs = Stack.peek();
         return cs.getCurrent();
     }
 
     @Override
-    public Object visitTwoRP(XqueryParser.TwoRPContext ctx){
+    public Object visitRPDot(XqueryParser.RPDotContext ctx){
         System.out.println("rp,rp");
         LinkedList<Node> first = (LinkedList<Node>) visit(ctx.rp(0));
         LinkedList<Node> second = (LinkedList<Node>) visit(ctx.rp(1));
@@ -199,7 +220,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitRPCondition(XqueryParser.RPConditionContext ctx){
+    public Object visitRPCond(XqueryParser.RPCondContext ctx){
         System.out.println("rp[f]");
         LinkedList<Node> first = (LinkedList<Node>) visit(ctx.rp());
         LinkedList<Node> result = new LinkedList<>();
@@ -208,7 +229,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
                 Curstate cs = new Curstate();
                 cs.add(node);
                 Stack.push(cs);
-                if ((Boolean)visit(ctx.fltr())) result.add(node);
+                if ((Boolean)visit(ctx.func())) result.add(node);
                 Stack.pop();
             }
         } catch (Exception ex){
@@ -218,34 +239,34 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitFRPwithPar(XqueryParser.FRPwithParContext ctx){
+    public Object visitFPar(XqueryParser.FParContext ctx){
         System.out.println("(f)");
-        return (Boolean) visit(ctx.fltr());
+        return (Boolean) visit(ctx.func());
     }
 
     @Override
-    public Object visitFRPnot(XqueryParser.FRPnotContext ctx){
+    public Object visitFnot(XqueryParser.FnotContext ctx){
         System.out.println("not f");
-        return !(Boolean)visit(ctx.fltr());
+        return !(Boolean)visit(ctx.func());
     }
 
     @Override
-    public Object visitFRP(XqueryParser.FRPContext ctx){
+    public Object visitF(XqueryParser.FContext ctx){
         System.out.println("f[rp]");
         LinkedList<Node> tmp = (LinkedList) visit(ctx.rp());
         return !tmp.isEmpty();
     }
 
     @Override
-    public Object visitFRPor(XqueryParser.FRPorContext ctx){
+    public Object visitFor(XqueryParser.ForContext ctx){
         System.out.println("f[or]");
-        Boolean first = (Boolean) visit(ctx.fltr(0));
-        Boolean second = (Boolean) visit(ctx.fltr(1));
+        Boolean first = (Boolean) visit(ctx.func(0));
+        Boolean second = (Boolean) visit(ctx.func(1));
         return (first || second);
     }
 
     @Override
-    public Object visitFRPequal(XqueryParser.FRPequalContext ctx){
+    public Object visitFequal(XqueryParser.FequalContext ctx){
         System.out.println("f[rp = rp] f[rp eq rp]");
         LinkedList<Node> first = (LinkedList<Node>) visit(ctx.rp(0));
         LinkedList<Node> second = (LinkedList<Node>) visit(ctx.rp(1));
@@ -257,7 +278,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitFRPis(XqueryParser.FRPisContext ctx){
+    public Object visitFis(XqueryParser.FisContext ctx){
         System.out.println("f[rp==rp] f[rp is rp]");
         LinkedList<Node> first = (LinkedList<Node>) visit(ctx.rp(0));
         LinkedList<Node> second = (LinkedList<Node>) visit(ctx.rp(1));
@@ -270,10 +291,10 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     }
 
     @Override
-    public Object visitFRPand(XqueryParser.FRPandContext ctx){
+    public Object visitFand(XqueryParser.FandContext ctx){
         System.out.println("f[and]");
-        Boolean first = (Boolean) visit(ctx.fltr(0));
-        Boolean second = (Boolean) visit(ctx.fltr(1));
+        Boolean first = (Boolean) visit(ctx.func(0));
+        Boolean second = (Boolean) visit(ctx.func(1));
         return (first && second);
     }
 

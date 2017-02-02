@@ -1,4 +1,4 @@
-// Generated from C:/Users/tom/IdeaProjects/db232/src/main/resources\Xquery.g4 by ANTLR 4.6
+// Generated from C:/Users/tom/Desktop/New folder/CSE232B/db232/src/main/resources\Xquery.g4 by ANTLR 4.6
 package anltr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -11,6 +11,18 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 public class XqueryBaseListener implements XqueryListener {
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAPTag(XqueryParser.APTagContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAPTag(XqueryParser.APTagContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -52,73 +64,61 @@ public class XqueryBaseListener implements XqueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAllChildren(XqueryParser.AllChildrenContext ctx) { }
+	@Override public void enterRPAttribute(XqueryParser.RPAttributeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAllChildren(XqueryParser.AllChildrenContext ctx) { }
+	@Override public void exitRPAttribute(XqueryParser.RPAttributeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRPChildren(XqueryParser.RPChildrenContext ctx) { }
+	@Override public void enterRPDot(XqueryParser.RPDotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRPChildren(XqueryParser.RPChildrenContext ctx) { }
+	@Override public void exitRPDot(XqueryParser.RPDotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRPwithPar(XqueryParser.RPwithParContext ctx) { }
+	@Override public void enterRPCond(XqueryParser.RPCondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRPwithPar(XqueryParser.RPwithParContext ctx) { }
+	@Override public void exitRPCond(XqueryParser.RPCondContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTagName(XqueryParser.TagNameContext ctx) { }
+	@Override public void enterRPCurrent(XqueryParser.RPCurrentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTagName(XqueryParser.TagNameContext ctx) { }
+	@Override public void exitRPCurrent(XqueryParser.RPCurrentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAttribute(XqueryParser.AttributeContext ctx) { }
+	@Override public void enterRPParent(XqueryParser.RPParentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAttribute(XqueryParser.AttributeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParent(XqueryParser.ParentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParent(XqueryParser.ParentContext ctx) { }
+	@Override public void exitRPParent(XqueryParser.RPParentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -136,6 +136,18 @@ public class XqueryBaseListener implements XqueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRPPar(XqueryParser.RPParContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRPPar(XqueryParser.RPParContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterRPAll(XqueryParser.RPAllContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -148,121 +160,121 @@ public class XqueryBaseListener implements XqueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCurrent(XqueryParser.CurrentContext ctx) { }
+	@Override public void enterRPTagName(XqueryParser.RPTagNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCurrent(XqueryParser.CurrentContext ctx) { }
+	@Override public void exitRPTagName(XqueryParser.RPTagNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTwoRP(XqueryParser.TwoRPContext ctx) { }
+	@Override public void enterRPChild(XqueryParser.RPChildContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTwoRP(XqueryParser.TwoRPContext ctx) { }
+	@Override public void exitRPChild(XqueryParser.RPChildContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRPCondition(XqueryParser.RPConditionContext ctx) { }
+	@Override public void enterRPAllChildren(XqueryParser.RPAllChildrenContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRPCondition(XqueryParser.RPConditionContext ctx) { }
+	@Override public void exitRPAllChildren(XqueryParser.RPAllChildrenContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFRPwithPar(XqueryParser.FRPwithParContext ctx) { }
+	@Override public void enterFand(XqueryParser.FandContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFRPwithPar(XqueryParser.FRPwithParContext ctx) { }
+	@Override public void exitFand(XqueryParser.FandContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFRPnot(XqueryParser.FRPnotContext ctx) { }
+	@Override public void enterFis(XqueryParser.FisContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFRPnot(XqueryParser.FRPnotContext ctx) { }
+	@Override public void exitFis(XqueryParser.FisContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFRP(XqueryParser.FRPContext ctx) { }
+	@Override public void enterF(XqueryParser.FContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFRP(XqueryParser.FRPContext ctx) { }
+	@Override public void exitF(XqueryParser.FContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFRPor(XqueryParser.FRPorContext ctx) { }
+	@Override public void enterFor(XqueryParser.ForContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFRPor(XqueryParser.FRPorContext ctx) { }
+	@Override public void exitFor(XqueryParser.ForContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFRPequal(XqueryParser.FRPequalContext ctx) { }
+	@Override public void enterFequal(XqueryParser.FequalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFRPequal(XqueryParser.FRPequalContext ctx) { }
+	@Override public void exitFequal(XqueryParser.FequalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFRPis(XqueryParser.FRPisContext ctx) { }
+	@Override public void enterFPar(XqueryParser.FParContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFRPis(XqueryParser.FRPisContext ctx) { }
+	@Override public void exitFPar(XqueryParser.FParContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFRPand(XqueryParser.FRPandContext ctx) { }
+	@Override public void enterFnot(XqueryParser.FnotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFRPand(XqueryParser.FRPandContext ctx) { }
+	@Override public void exitFnot(XqueryParser.FnotContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

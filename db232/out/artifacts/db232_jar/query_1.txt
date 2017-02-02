@@ -1,1 +1,1 @@
-document("j_caesar.xml")//(ACT,PERSONAE)/TITLE
+<T>{document("j_caesar.xml")//(ACT,PERSONAE)/TITLE}</t>

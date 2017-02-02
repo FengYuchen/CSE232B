@@ -27,6 +27,8 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) throws Exception{
         String fname = args[0] + ".txt";
+       // String fname = "query_1.txt";
+
         File input = new File(fname);
         FileInputStream fileinput = new FileInputStream(input);
         ANTLRInputStream inputStream = new ANTLRInputStream(fileinput);
@@ -53,6 +55,8 @@ public class Main {
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         transformer.setOutputProperty (OutputKeys.INDENT, "yes");
         Result res = new StreamResult(new File(args[0] + ".xml"));
+       // Result res = new StreamResult(new File("pit"+ ".xml"));
+
         Source src = new DOMSource(doc);
         transformer.transform(src, res);
 
