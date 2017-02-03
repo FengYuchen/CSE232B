@@ -4,10 +4,7 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -46,8 +43,12 @@ public class Main {
         Curstate.printall(result);
         Node top = doc.createElement("Result");
         doc.appendChild(top);
+        Comment  comment = doc.createComment("Number of Nodes: " + result.size());
+        top.appendChild(comment);
         for (int i = 0; i < result.size(); i++){
             Element node = dfs(doc, result.get(i));
+            Comment comment1 = doc.createComment("Node #" + (i + 1));
+            top.appendChild(comment1);
             top.appendChild(node);
         }
 

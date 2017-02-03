@@ -42,7 +42,7 @@ public class Curstate {
     }
     public LinkedList<Node> getCurrent(){
         LinkedList<Node> res = new LinkedList<Node>();
-        res.add(node_list.peek());
+        res.addAll(node_list);
         return res;
     }
     public LinkedList<Node> getChildren(){
