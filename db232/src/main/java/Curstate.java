@@ -24,6 +24,11 @@ public class Curstate {
     public void add(Node node){
         node_list.add(node);
     }
+    public void add(LinkedList<Node> nodelist){
+        int k = nodelist.size();
+        for (int i = 0; i < k; i++)
+            node_list.add(nodelist.get(i));
+    }
     public void apend(LinkedList<Node> list){
         for (int i = 0; i < list.size(); i++)
             node_list.add(list.get(i));
@@ -47,10 +52,14 @@ public class Curstate {
     }
     public LinkedList<Node> getChildren(){
         LinkedList<Node> res = new LinkedList<Node>();
+        try{
         for (int i = 0; i < node_list.size(); i++){
             NodeList tmp = node_list.get(i).getChildNodes();
             for (int j = 0; j < tmp.getLength(); j++)
                 res.add(tmp.item(j));
+        }}
+        catch (Exception e){
+            e.printStackTrace();
         }
         return res;
     }
