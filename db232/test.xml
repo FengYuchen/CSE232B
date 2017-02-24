@@ -3,7 +3,7 @@
     uid="A531015">
     <food date="1.1.1">
         <name>Belgian Waffles</name>
-        <price>5.95</price>
+        <price>1.09</price>
         <description>Our famous Belgian Waffles with plenty of real maple syrup</description>
         <calories>650</calories>
     </food>
@@ -20,6 +20,14 @@
         <calories>950</calories>
     </food>
     <drink>
+            <name>Coco</name>
+            <price>1.09</price>
+    </drink>
+	<drink>
+            <name>Coco</name>
+            <price>1.09</price>
+    </drink>
+	<drink>
             <name>Coco</name>
             <price>1.09</price>
     </drink>

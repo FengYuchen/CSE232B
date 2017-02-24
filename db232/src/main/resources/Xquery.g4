@@ -46,7 +46,7 @@ cond
     | xq '==' xq        #XQCondIs
     | xq 'is' xq        #XQCondIs
     | 'empty' '(' xq ')'    #XQCondEmpty
-    | 'some' '$' var 'in' xq (',' var 'in' xq)* 'satisfies' cond    #XQCondSome
+    | 'some' '$' var 'in' xq (',' '$' var 'in' xq)* 'satisfies' cond    #XQCondSome
     | '(' cond ')'      #XQCondPar
     | cond 'and' cond   #XQCondAnd
     | cond 'or' cond    #XQCondOr

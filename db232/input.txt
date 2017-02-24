@@ -1,6 +1,7 @@
-<result>{
-for $a in doc("j_caesar.xml")//PERSONAE, $b in $a/PERSONA 
-  where not (($b/text() = "JULIUS CAESAR") or ($b/text() = "Another Poet") )
-   return $b
-}
-</result>
+
+for $s in doc("j_caesar.xml")//SPEAKER
+return <speaks>{<who>{$s/text()}</who>,
+                for $a in doc("j_caesar.xml")//ACT
+                where some $s1 in $a//SPEAKER, $s2 in $a//TITLE satisfies (($s1 eq $s) and ($s2/text() = "ACT IV"))
+                return <when>{$a/TITLE/text()}</when>}
+       </speaks>

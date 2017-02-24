@@ -20,6 +20,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
     private LinkedList<LinkedList<Node>> Stack_output = new LinkedList<LinkedList<Node>>();
     private Map<String, Node> varlist = new HashMap();
     private LinkedList<Node> emp = new LinkedList<>();
+    private int depth = 0;
     public LinkedList<Node> output = new LinkedList<>();
     private static LinkedList<Node> unique(LinkedList<Node> node_list) {
         LinkedList<Node> res = new LinkedList<Node>();
@@ -244,13 +245,14 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
         System.out.println("Var: " + varname + " has " + n + " nodes.");
         if (varl.isEmpty()) {
             for (i = 0;i < n;i ++) {
+
+
                 varlist.put(varname, varbuffer.get(i));
-                System.out.println();
+                System.out.println("The depth of for loop is " + i);
                 if (l != null) visit(l);
                 if (w == null) visit(r);
                 else if((Boolean) visit(w) == true) {
-
-                    System.out.println("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+                    System.out.println("I find you");
  /*                   Node ll = varlist.get("a");
                     NodeList aa = ll.getChildNodes();
                     for (int ii = 0; ii < aa.getLength(); ii++){
@@ -273,7 +275,6 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
         else {
             for (i = 0; i < n; i++) {
                 varlist.put(varname, varbuffer.get(i));
-                if (varname.equals("sc")) System.out.println("varl size: " + varl.size());
                 runFLWR(varl, xql, l, w, r);
             }
         }
@@ -282,6 +283,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
         return emp;
     }
     @Override public Boolean visitXQCondSome(XqueryParser.XQCondSomeContext ctx) {
+        System.out.println("some varible in xq satisfies cond");
         Map<String, Node> buffer = varlist;
         List<XqueryParser.VarContext> var_list= ctx.var();
         LinkedList<LinkedList<Node>> temp = new LinkedList<LinkedList<Node>>();
@@ -292,6 +294,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
             temp.add((LinkedList<Node>) visit(ctx.xq(i)));
             sizelist[i] = temp.get(i).size();
             flaglist[i] = 0;
+            System.out.println("len: "+sizelist[i]);
         }
 
         while (true) {
@@ -299,7 +302,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
             if ((boolean)visit(ctx.cond()) == true) return true;
             for(int i = 0;i < len;i ++) {
                 flaglist[i] += 1;
-                if (flaglist[i] <= sizelist[i]) break;
+                if (flaglist[i] < sizelist[i]) break;
                 flaglist[i] = 0;
             }
             int j = 0;
@@ -461,7 +464,7 @@ public class MyVisitor extends XqueryBaseVisitor<Object>{
         LinkedList<Node> first = (LinkedList<Node>) visit(ctx.rp(0));
         Curstate cs = new Curstate();
         cs.apend(first);
-        LinkedList<Node> child = cs.getParent();
+        LinkedList<Node> child = cs.getAllChildren();
         Curstate tmp = new Curstate();
         for (Node node : child) {
             tmp.add(node);

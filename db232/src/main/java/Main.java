@@ -1,14 +1,20 @@
-import anltr.XqueryLexer;
 import anltr.XqueryParser;
+import anltr.XqueryLexer;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.DOTTreeGenerator;
 import org.antlr.runtime.tree.Tree;
+import org.antlr.v4.Tool;
+import org.antlr.v4.gui.GraphicsSupport;
+import org.antlr.v4.gui.TestRig;
+import org.antlr.v4.gui.TreePostScriptGenerator;
+import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonToken;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.w3c.dom.*;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,7 +25,7 @@ import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.util.LinkedList;
-import org.stringtemplate.*;
+
 /**
  * Created by tom on 1/29/2017.
  */
@@ -31,10 +37,18 @@ public class Main {
 
         File input = new File(fname);
         FileInputStream fileinput = new FileInputStream(input);
+
         ANTLRInputStream inputStream = new ANTLRInputStream(fileinput);
+
         XqueryLexer lex = new XqueryLexer(inputStream);
         CommonTokenStream tokenStream = new CommonTokenStream(lex);
         XqueryParser parser = new XqueryParser(tokenStream);
+        String[] arg = new String[4];
+        arg[0] = "anltr.Xquery";
+        arg[1] = "xq";
+        arg[2] = "-gui";
+        arg[3] = "input.txt";
+        TestRig.main(arg);
         ParseTree tree = parser.xq();
         MyVisitor myVistor = new MyVisitor();
         LinkedList<Node> result = new LinkedList<Node>();
@@ -63,9 +77,8 @@ public class Main {
 
         Source src = new DOMSource(doc);
         transformer.transform(src, res);
-        DOTTreeGenerator gen = new DOTTreeGenerator();
-         st= gen.toDOT((CommonTree) tree);
-        System.out.println(st);
+
+
     }
 
     private static Element dfs(Document doc, Node node){
